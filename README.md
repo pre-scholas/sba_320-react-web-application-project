@@ -1,17 +1,16 @@
-# React + Vite
+# SBA_320-react-web-application-project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Your application must meet these requirements to pass (this it your Minimum Viable Product):
 
-Currently, two official plugins are available:
+Built with HTML, CSS, JavaScript, REACT, and Redux Toolkit.
+Hosted on Heroku or Netlify.
+Frequent commits to GitHub.
+A README.md file in your GitHub repository with:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# sba_320-react-web-application-project
+Explanations of the technologies used.
+Explanations of the approach taken.
+A link to your live site.
+Usage instructions, if relevant.
+Unsolved problems.
+etc.
+Use AJAX to make a request to an external data source like OMDBapi, and insert some of the data retrieved into the DOM.
