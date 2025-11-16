@@ -1,45 +1,25 @@
-import { useState, useEffect } from 'react'
+import {useState} from 'react'
 
 import './App.css'
+import Planets from './components/Planets'
+// import Starships from './components/Starships'
+// import People from './components/People'
+
+
+
 
 function App() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://swapi.dev/api/planets/1/')
-        if (!response.ok) {
-          throw new Error(`HTTP error! status response ${response.status} `);
-
-        }
-        const result = await response.json()
-        setData(result)
-      } catch (err) {
-        setError(err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData();
-  }, [])
-
-  if (loading) return <div>Loading data...</div>
-  if (error) return <div>Error: {error.message}</div>
-
   return (
     <>
-
-
-      <div className="card">
-        <h3>API test:</h3>
-        {/* Render your fetched data here */}
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-
+      <div>
+        {/* 
+          The Planets component handles its own data fetching,
+          loading, and error states.
+        */}
+        <Planets />
+        {/* <Starships /> */}
+        {/* <People /> */}
       </div>
-
     </>
   )
 }
