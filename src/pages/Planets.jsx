@@ -1,47 +1,14 @@
-import { useEffect, useState, useReducer } from "react";
-import axios from "axios";
+import { useState } from "react";
+import { createContext } from "react";
 import Card from "../components/Card";
-
-const initialState = {
-    loading: true,
-    error: null,
-    data: null,
-};
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'FETCH_START':
-            return { ...state, loading: true, error: null };
-        case 'FETCH_SUCCESS':
-            return { ...state, loading: false, data: action.payload };
-        case 'FETCH_ERROR':
-            return { ...state, loading: false, error: action.payload };
-        default:
-            throw new Error(`Unhandled action type: ${action.type}`);
-    }
-}
+import { useApiData } from "../hooks/useApiData";
 
 function Planets() {
-    const [state, dispatch] = useReducer(reducer, initialState);
     const [urlPlanets, setUrlPlanets] = useState(
         `https://swapi.dev/api/planets/?page=1`
     );
 
-    useEffect(() => {
-        const fetchPlanets = async () => {
-            dispatch({ type: 'FETCH_START' });
-            try {
-                const response = await axios.get(urlPlanets);
-                dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
-            } catch (err) {
-                dispatch({ type: 'FETCH_ERROR', payload: err });
-            }
-        };
-
-        fetchPlanets();
-    }, [urlPlanets]);
-
-    const { loading, error, data } = state;
+    const { loading, error, data } = useApiData(urlPlanets);
 
     if (loading) {
         return (
