@@ -1,5 +1,6 @@
 import { useEffect, useState, useReducer } from "react";
 import axios from "axios";
+import Card from "../components/Card";
 
 const initialState = {
     loading: true,
@@ -70,25 +71,25 @@ function Planets() {
             >
                 ⏪ Previous Page
             </button>
-            <button
-                onClick={() => setUrlPlanets(data.next)}
-                disabled={!data.next}
-            >
+            <button onClick={() => setUrlPlanets(data.next)} disabled={!data.next}>
                 Next Page⏩
             </button>
 
             <main>
-                {data && data.results.map((planet) => (
-                    <div key={planet.name} className="card card-planet">
-                        <h2>{planet.name}</h2>
-                        <p>Population: {planet.population}</p>
-                        <p>Climate: {planet.climate}</p>
-                        <p>Terrain: {planet.terrain}</p>
-                        <br />
-                        <button>Explore</button>
-
-                    </div>
-                ))}
+                {data && data.results.map((planet) => {
+                    const planetDetails = [
+                        { label: 'Population', value: planet.population },
+                        { label: 'Climate', value: planet.climate },
+                        { label: 'Terrain', value: planet.terrain },
+                    ];
+                    return (
+                        <Card
+                            key={planet.name}
+                            title={planet.name}
+                            details={planetDetails}
+                            type="planet" />
+                    );
+                })}
             </main>
         </div>
     );
